@@ -1,7 +1,7 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from "react-dom/server";
-import Home from '../contain/home';
+import Home from './contain/home';
 const Contain = renderToString(<Home/>);
 var app = express();
 app.use(express.static('public'));
