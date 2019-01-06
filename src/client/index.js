@@ -1,5 +1,11 @@
-import Home from '../contain/home.js';
 import React from 'react';
 import ReactDom from 'react-dom';
-
-ReactDom.hydrate(<Home/>,document.getElementById('root'));
+import { BrowserRouter } from 'react-router-dom';
+import Router from '../router';
+console.log(Router,'router')
+const App = () =>{
+   return (<BrowserRouter>
+        {Router}
+    </BrowserRouter>)
+} 
+ReactDom.hydrate(<App/>,document.getElementById('root'));
