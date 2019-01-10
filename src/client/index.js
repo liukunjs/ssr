@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Router from '../router';
 import getStore from '../store/store';
-console.log(getStore)
+import * as ReactRedux from "react-redux";
+import * as Redux from 'react';
+console.log(Redux,'redux')
+console.log(ReactRedux,'ReactRedux')
 const App = () =>{
    return (
        <Provider store={getStore()}>

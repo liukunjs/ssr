@@ -1,10 +1,18 @@
 let action = {type:1,text:'cc'}
 export  const reducer = (state={name:'liukun'},action)=>{
-    console.log(action,'aciton')
+    console.log("action come")
     switch (action.type){
         case 1:
-            state.name = 'cc'
-            return state
+            console.log('case1')
+            return Object.assign({}, state, {
+                name:'cc love lk'
+            });
+        case 0:
+            return Object.assign({},state,{
+                name: 'lk love cc'
+            })
+        default:
+        return state
 
     }
 }

@@ -5,11 +5,12 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node-modules/,
             options: {
-                'presets': ['react','stage-0',['env',{
+                presets: ['react','es2015', ['env',{
                     targets: {
                        browser: ['last 2 versions'] 
                     }
-                }]]
+                    // state-0必须写后面
+                }],'stage-0',]
             }
         }]
     }
