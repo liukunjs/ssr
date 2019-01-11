@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
  class Home extends Component{
     constructor (props){
         super(props);
@@ -17,6 +18,13 @@ import { connect } from 'react-redux';
             mark: !this.state.mark
         })
     }
+    all=()=>{
+        this.props.getAll()
+    }
+    componentDidMount(){
+        let { dispatch } = this.props
+        console.log(bindActionCreators(actionCreate().a,dispatch,'bindActionCreators'))
+    }
     render(){
         const { name } = this.props
         return(
@@ -24,13 +32,37 @@ import { connect } from 'react-redux';
                 <div>this a onemore time</div>
                 <div>{name}</div>
                 <div onClick={this.toDo}>click me</div>
+                <div onClick={this.all}>get money</div>
+                {/* <div onClick={this.props.nine}>89</div> */}
             </div>
         )
     }
 }
-const mapStateProps = (state)=>{
+const mapStateProps = (...props)=>{
+    const state = props[0];
+    // mapStateProps的第二个参数是一个 this.props
+    console.log(props[1],'pros')
     return{
         name: state.name
     }
 }
-export default connect(mapStateProps,null)(Home)
+const actionCreate = ()=>{
+    return {
+       a: ()=>{
+           return{type:7}
+       },
+       b: ()=>{
+           return {type:8}
+       }
+    }
+}
+const mapDispatchToProp = (dispatch) =>{
+    return {
+        getAll:()=>{
+            dispatch({
+                type:5,
+            })
+        },
+    }
+}
+export default connect(mapStateProps,mapDispatchToProp)(Home)

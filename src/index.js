@@ -5,4 +5,4 @@ app.use(express.static('public'));
 app.get('*',function(req,res){
     res.send(render(req));
 });
-var serve = app.listen(3000);
+var serve = app.listen(3002);

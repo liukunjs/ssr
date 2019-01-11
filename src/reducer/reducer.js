@@ -11,6 +11,14 @@ export  const reducer = (state={name:'liukun'},action)=>{
             return Object.assign({},state,{
                 name: 'lk love cc'
             })
+        case 5:
+            return Object.assign({},state,{
+                name:'money many'
+            })
+        case 7:
+            return Object.assign({},state,{name:'fafafa'});
+        case 8:
+            return Object.assign({},state,{name:'faff88'})
         default:
         return state
 
