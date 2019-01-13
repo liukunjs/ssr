@@ -1,5 +1,6 @@
+import { combineReducers } from 'redux'
 let action = {type:1,text:'cc'}
-export  const reducer = (state={name:'liukun'},action)=>{
+const reducer1 = (state={name:'liukun'},action)=>{
     console.log("action come")
     switch (action.type){
         case 1:
@@ -24,3 +25,12 @@ export  const reducer = (state={name:'liukun'},action)=>{
 
     }
 }
+    const reducer=(state={},action)=>{
+    switch (action.type){
+        case 555:
+            return Object.assign({},state,{list:action.data});
+        default:
+        return state;
+    }
+}
+export default combineReducers({reducer1,reducer})

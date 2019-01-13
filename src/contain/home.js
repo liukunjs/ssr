@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import query from '../action/query';
  class Home extends Component{
     constructor (props){
         super(props);
@@ -23,10 +24,12 @@ import { bindActionCreators } from 'redux';
     }
     componentDidMount(){
         let { dispatch } = this.props
-        console.log(bindActionCreators(actionCreate().a,dispatch,'bindActionCreators'))
+        console.log(bindActionCreators(actionCreate().a,dispatch,'bindActionCreators'));
+        this.props.query();
     }
     render(){
         const { name } = this.props
+        console.log(this.props,'props')
         return(
             <div>
                 <div>this a onemore time</div>
@@ -41,9 +44,10 @@ import { bindActionCreators } from 'redux';
 const mapStateProps = (...props)=>{
     const state = props[0];
     // mapStateProps的第二个参数是一个 this.props
-    console.log(props[1],'pros')
+    console.log(state,'state')
     return{
-        name: state.name
+        name: state.reducer1.name,
+        list: state.reducer.data
     }
 }
 const actionCreate = ()=>{
@@ -63,6 +67,9 @@ const mapDispatchToProp = (dispatch) =>{
                 type:5,
             })
         },
+        query:()=>{
+            dispatch(query());
+        }
     }
 }
 export default connect(mapStateProps,mapDispatchToProp)(Home)
