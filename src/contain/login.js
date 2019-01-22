@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-export default class Login extends Component {
+class Login extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -14,3 +14,7 @@ export default class Login extends Component {
         )
     }
 }
+Login.loadData =()=>{
+
+}
+export default Login;

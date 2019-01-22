@@ -10,6 +10,7 @@ import query from '../action/query';
         }
     }
     toDo=()=>{
+
         let action = {
             type: Number(this.state.mark),
             text: 'love cc'
@@ -71,5 +72,9 @@ const mapDispatchToProp = (dispatch) =>{
             dispatch(query());
         }
     }
+}
+Home.loadData=(match)=>{
+    console.log(match,'homematch')
+    return match
 }
 export default connect(mapStateProps,mapDispatchToProp)(Home)
