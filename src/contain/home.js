@@ -10,13 +10,11 @@ import query from '../action/query';
         }
     }
     toDo=()=>{
-
         let action = {
             type: Number(this.state.mark),
             text: 'love cc'
         }
         this.props.dispatch(action)
-        console.log(this.props.dispatch(action),'dispatch')
         this.setState({
             mark: !this.state.mark
         })
@@ -25,14 +23,13 @@ import query from '../action/query';
         this.props.getAll()
     }
     componentDidMount(){
-        console.log(69999666)
         let { dispatch } = this.props
         console.log(bindActionCreators(actionCreate().a,dispatch,'bindActionCreators'));
         this.props.query();
     }
     render(){
         const { name } = this.props
-        console.log(this.props,'props')
+        // console.log(this.props,'props')
         return(
             <div>
                 <div>this a onemore time</div>
@@ -47,7 +44,7 @@ import query from '../action/query';
 const mapStateProps = (...props)=>{
     const state = props[0];
     // mapStateProps的第二个参数是一个 this.props
-    console.log(state,'state')
+    // console.log(state,'state')
     return{
         name: state.reducer1.name,
         list: state.reducer.data
@@ -75,7 +72,7 @@ const mapDispatchToProp = (dispatch) =>{
         }
     }
 }
-Home.loadData=(store)=>{
-    // return store.dispatch(query())
+Home.loadData = (store) =>{
+    return store.dispatch(query())
 }
 export default connect(mapStateProps,mapDispatchToProp)(Home)

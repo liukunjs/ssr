@@ -1,5 +1,5 @@
 import axios from 'axios';
-let url = 'https://www.-mock.com/mock/5c3b32886e3f5f24c34355d8/example/query';
+let url = '/data.json';
 const getlist = (type)=>(
     {
         type:555,
@@ -8,9 +8,9 @@ const getlist = (type)=>(
 )
 const query = () =>{
     return (dispatch)=>{
-        return axios.post(url).then((res)=>{
-            const type =  {type:555,data:res.data.data.pagelist}
-            console.log(res.data.data.pagelist,'list')
+        return axios.get(url).then((res)=>{
+            const type =  {type:555,data:res.data.data.list}
+            console.log(res.data.data.list,'list')
             dispatch(getlist(type))
         })
     }

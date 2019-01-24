@@ -8,16 +8,16 @@ import { matchRoutes } from "react-router-config";
 let store = getstore()
 export const render = (req) => {
     const promises = [];
-    routers.some(route => {
-        const match = matchRoutes(routes, req.path);
-        console.log(JSON.stringify(route.loadData(store)),"match")
-        if (match) promises.push(route.loadData(store));
-        return match;
-    });
-    console.log(JSON.stringify(promises),'sringif')
+    const match = matchRoutes(routers, req.path);
+    match.forEach((item)=>{
+        if(item.route.loadData){
+            console.log('jinlaile....')
+            promises.push(item.route.loadData(store))
+        }
+    })
     Promise.all(promises).then(data => {
         console.log(data,'data')  
-      });
+      }).catch((e)=>console.log(e));
     const Contain = renderToString(<Provider store = {store}><StaticRouter context={{}} location={req.path}>{Router}</StaticRouter></Provider>);
     return (
         `
