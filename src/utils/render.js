@@ -1,14 +1,15 @@
 import { renderToString } from "react-dom/server";
-import { StaticRouter,matchPath } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import {Router,routers} from '../router.js'
 import React from 'react';
 import getstore from "../store/store";
+import { matchRoutes } from "react-router-config";
 let store = getstore()
 export const render = (req) => {
     const promises = [];
     routers.some(route => {
-        const match = matchPath(req.path, route);
+        const match = matchRoutes(routes, req.path);
         console.log(JSON.stringify(route.loadData(store)),"match")
         if (match) promises.push(route.loadData(store));
         return match;
