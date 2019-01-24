@@ -8,7 +8,7 @@ const getlist = (type)=>(
 )
 const query = () =>{
     return (dispatch)=>{
-        axios.post(url).then((res)=>{
+        return axios.post(url).then((res)=>{
             const type =  {type:555,data:res.data.data.pagelist}
             console.log(res.data.data.pagelist,'list')
             dispatch(getlist(type))

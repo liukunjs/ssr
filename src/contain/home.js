@@ -73,8 +73,7 @@ const mapDispatchToProp = (dispatch) =>{
         }
     }
 }
-Home.loadData=(match)=>{
-    console.log(match,'homematch')
-    return match
+Home.loadData=(store)=>{
+    return store.dispatch(query())
 }
 export default connect(mapStateProps,mapDispatchToProp)(Home)
