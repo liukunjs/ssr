@@ -16,6 +16,7 @@ import query from '../action/query';
             text: 'love cc'
         }
         this.props.dispatch(action)
+        console.log(this.props.dispatch(action),'dispatch')
         this.setState({
             mark: !this.state.mark
         })
@@ -24,6 +25,7 @@ import query from '../action/query';
         this.props.getAll()
     }
     componentDidMount(){
+        console.log(69999666)
         let { dispatch } = this.props
         console.log(bindActionCreators(actionCreate().a,dispatch,'bindActionCreators'));
         this.props.query();
@@ -74,6 +76,6 @@ const mapDispatchToProp = (dispatch) =>{
     }
 }
 Home.loadData=(store)=>{
-    return store.dispatch(query())
+    // return store.dispatch(query())
 }
 export default connect(mapStateProps,mapDispatchToProp)(Home)

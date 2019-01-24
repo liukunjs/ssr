@@ -1,5 +1,5 @@
 import axios from 'axios';
-let url = 'https://www.easy-mock.com/mock/5c3b32886e3f5f24c34355d8/example/query';
+let url = 'https://www.-mock.com/mock/5c3b32886e3f5f24c34355d8/example/query';
 const getlist = (type)=>(
     {
         type:555,

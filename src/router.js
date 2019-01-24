@@ -1,12 +1,12 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route,Switch } from "react-router-dom";
 import Home from './contain/home';
 import Login from './contain/login';
 import Header from './components/header.js'
 export const routers = [
     {
         path:'/',
-        components:Home,
+        component:Home,
         exact:true,
         loadData: Home.loadData
     },
@@ -19,8 +19,9 @@ export const routers = [
 ]
 
 export const Router =  (<div>
-                    <Header>
-                        {routers.map((route)=><Route {...route}></Route>)}
-                    </Header>
+                            <Header/>
+                            <Switch>
+                                 {routers.map((route,index)=><Route {...route} key={index}></Route>)}
+                            </Switch>
                 </div>
                       ) 
