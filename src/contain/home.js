@@ -76,3 +76,4 @@ Home.loadData = (store) =>{
     return store.dispatch(query())
 }
 export default connect(mapStateProps,mapDispatchToProp)(Home)
+

@@ -11,13 +11,12 @@ export const render = (req) => {
     const match = matchRoutes(routers, req.path);
     match.forEach((item)=>{
         if(item.route.loadData){
-            console.log('jinlaile....')
             promises.push(item.route.loadData(store))
         }
     })
     Promise.all(promises).then(data => {
-        console.log(data,'data')  
-      }).catch((e)=>console.log(e));
+        console.log(data.data,'data')  
+      })
     const Contain = renderToString(<Provider store = {store}><StaticRouter context={{}} location={req.path}>{Router}</StaticRouter></Provider>);
     return (
         `
