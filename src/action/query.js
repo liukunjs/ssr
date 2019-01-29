@@ -8,11 +8,12 @@ const getlist = (type)=>(
 )
 const query = () =>{
     return (dispatch)=>{
-        return axios.get(url).then((res)=>{
+         axios.get(url).then((res)=>{
             const type =  {type:555,data:res.data.data.list}
             console.log(res.data.data.list,'list')
             dispatch(getlist(type))
         })
+        return axios.get(url)
     }
 }
 export default query

@@ -15,7 +15,7 @@ export const render = (req) => {
         }
     })
     Promise.all(promises).then(data => {
-        console.log(data.data,'data')  
+        console.log(data[0].data.data.list,'data')  
       })
     const Contain = renderToString(<Provider store = {store}><StaticRouter context={{}} location={req.path}>{Router}</StaticRouter></Provider>);
     return (
