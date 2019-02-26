@@ -10,7 +10,7 @@ const serverFonfig = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build')
     },
+    // 打包时候可以避免 打包nodemodules里面的内容，nodeExternals({可以加入白名单})
     externals:[nodeExternals()],
 }
-
 module.exports = merge(serverFonfig,basis)
