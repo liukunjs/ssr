@@ -24,11 +24,23 @@ import query from '../action/query';
     }
     componentDidMount(){
         let { dispatch } = this.props
+        console.log(this.props,"props")
         console.log(bindActionCreators(actionCreate().a,dispatch,'bindActionCreators'));
+        // 客户端请求的store，请求数据
         this.props.query();
     }
+    getList =()=>{
+        // console.log(this.props.list,'[[')
+        const { list } =this.props
+        console.log(list.map,'asdf')
+            return list.map(v=>
+             (
+                <div key={v}>{v}</div>
+            )
+        )
+    }
     render(){
-        const { name } = this.props
+        const { name,list } = this.props
         // console.log(this.props,'props')
         return(
             <div>
@@ -37,17 +49,15 @@ import query from '../action/query';
                 <div onClick={this.toDo}>click me</div>
                 <div onClick={this.all}>get money</div>
                 {/* <div onClick={this.props.nine}>89</div> */}
+                {list?this.getList():""}
             </div>
         )
     }
 }
-const mapStateProps = (...props)=>{
-    const state = props[0];
-    // mapStateProps的第二个参数是一个 this.props
-    // console.log(state,'state')
+const mapStateProps = (state)=>{
     return{
         name: state.reducer1.name,
-        list: state.reducer.data
+        list: state.reducer.list
     }
 }
 const actionCreate = ()=>{
@@ -72,6 +82,7 @@ const mapDispatchToProp = (dispatch) =>{
         }
     }
 }
+// 后端使用loadData调用action 触发一次后端store,请求数据
 Home.loadData = (store) =>{
     return store.dispatch(query())
 }

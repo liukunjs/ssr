@@ -1,23 +1,13 @@
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import {Router,routers} from '../router.js'
 import React from 'react';
-import getstore from "../store/store";
-import { matchRoutes } from "react-router-config";
-let store = getstore()
-export const render = (req) => {
-    const promises = [];
-    const match = matchRoutes(routers, req.path);
-    match.forEach((item)=>{
-        if(item.route.loadData){
-            promises.push(item.route.loadData(store))
-        }
-    })
-    Promise.all(promises).then(data => {
-        console.log(data[0].data.data.list,'data')  
-      })
+export const render = (req,store,Router) => {
+      // location 可以监控前段的路由，从而让后端得知
+      // <router/>只有方法才可以这样写
+      // 因为前端是使用后端的router所以这里的store被初始化后在调用router时是通过home里面的getList这个获取props后端的list
     const Contain = renderToString(<Provider store = {store}><StaticRouter context={{}} location={req.path}>{Router}</StaticRouter></Provider>);
+    // 为了让前端的逻辑点击事件等可以操作所以得留一个入口，"index.js"
     return (
         `
         <html>
@@ -27,6 +17,7 @@ export const render = (req) => {
             </head>
             <body>
             <div id="root">${Contain}</div>
+            <script>window.context=${JSON.stringify(store.getState())}</script>
             <script src='/index.js'></script>
             </body>
         </html>
