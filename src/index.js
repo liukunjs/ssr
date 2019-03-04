@@ -1,13 +1,20 @@
 import express from 'express';
-var proxy = require('http-proxy-middleware');
+// import proxy from 'http-proxy-middleware';
 import {render} from './utils/render.js';
 import { matchRoutes } from "react-router-config";
 import {Router,routers} from './router.js'
 import {getStore} from "./store/store";
+import proxy from "express-http-proxy"
+
 let store = getStore()
 var app = express();
 // app.use(proxy('/', { target: '127.0.0.1:8080', changeOrigin: true }));
 app.use(express.static('public'));
+app.use("/mock",proxy("https://www.easy-mock.com",{
+    proxyReqPathResolver:function(req){
+        return "/mock"+req.url
+    }
+}))
 app.get('*',function(req,res){
     const promises = [];
     const match = matchRoutes(routers, req.path);
