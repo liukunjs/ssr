@@ -15,5 +15,20 @@ clientConfig = {
         // 因此为了保持路径的统一性使用__dirname
         path: path.resolve(__dirname, 'public')
     },
+    module:{
+        rules:[{
+            test:/\.css$/,
+            use: ['style-loader',{
+            loader: 'css-loader',
+            options: {
+                importLoaders: 1,
+                // 定义模块化
+                modules: true,
+                //定义本地的css文件名
+                localIdentName: '[name]_[local]_[hash:base64:4]'
+            }
+        }]
+    }]
+    }
 }
 module.exports = merge(clientConfig,basis) ;

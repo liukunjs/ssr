@@ -12,5 +12,20 @@ const serverFonfig = {
     },
     // 打包时候可以避免 打包nodemodules里面的内容，nodeExternals({可以加入白名单})
     externals:[nodeExternals()],
+    module:{
+        rules:[{
+            test:/\.css$/,
+            use: ['isomorphic-style-loader',{
+            loader: 'css-loader',
+            options: {
+                importLoaders: 1,
+                // 定义模块化
+                modules: true,
+                //定义本地的css文件名
+                localIdentName: '[name]_[local]_[hash:base64:4]'
+            }
+        }]
+    }]
+    }
 }
 module.exports = merge(serverFonfig,basis)

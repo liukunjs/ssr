@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import query from '../action/query';
+import "./home.css"
  class Home extends Component{
     constructor (props){
         super(props);
