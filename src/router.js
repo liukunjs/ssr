@@ -11,6 +11,12 @@ export const routers = [
         loadData: Home.loadData
     },
     {
+        path:'*',
+        component:Header,
+        // exact:true,
+        loadData: Home.loadData
+    },
+    {
         path: '/login',
         component:Login,
         exact:true,

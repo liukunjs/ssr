@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import style from "./login.css"
 class Login extends Component {
     constructor(props){
         super(props)
@@ -6,10 +7,15 @@ class Login extends Component {
 
         }
     }
+    componentWillMount(){
+        if(this.props.staticContext){
+            this.props.staticContext.css.push(style._getCss())
+        }
+    }
     render(){
         return(
-            <div>
-                this is login
+            <div className={style.test}>
+                this is login 
             </div>
         )
     }

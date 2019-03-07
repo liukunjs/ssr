@@ -2,8 +2,10 @@ import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import query from '../action/query';
-import "./home.css"
- class Home extends Component{
+import style from "./home.css"
+import heighComponent from "../utils/heightComponent.js"
+heighComponent();
+class Home extends Component{
     constructor (props){
         super(props);
         this.state = {
@@ -23,6 +25,13 @@ import "./home.css"
     all=()=>{
         this.props.getAll()
     }
+    // componentWillMount(){
+    //     // 判断是服务器环境
+    //     if(this.props.staticContext){
+    //         // 负值css属性，在node端获取
+    //         this.props.staticContext.css.push(style._getCss())
+    //     }
+    // }
     componentDidMount(){
         let { dispatch } = this.props
         console.log(this.props,"props")
@@ -87,5 +96,5 @@ const mapDispatchToProp = (dispatch) =>{
 Home.loadData = (store) =>{
     return store.dispatch(query())
 }
-export default connect(mapStateProps,mapDispatchToProp)(Home)
+export default connect(mapStateProps,mapDispatchToProp)(heighComponent(Home,style))
 

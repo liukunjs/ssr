@@ -25,7 +25,17 @@ app.get('*',function(req,res){
     })
     Promise.all(promises).then(data => {
         // console.log(store.getState())
-        res.send(render(req,store,Router));        
+        let context = {}
+            context.css=[]
+        const html=render(req,store,Router,context); 
+        if(context.action ==="REPLACE"){
+            res.redirect(301,context.url)
+        }else if(context.NOT_FOUND){
+            res.status(404)
+            res.send(html)
+        }else{
+            res.send(html)
+        }     
       })
 });
 // node 本地请求的时候默认端口 为 80 所以的修改
