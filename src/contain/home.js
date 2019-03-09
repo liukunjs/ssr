@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import {Helmet} from "react-helmet"
 import query from '../action/query';
 import style from "./home.css"
 import heighComponent from "../utils/heightComponent.js"
@@ -27,9 +28,9 @@ class Home extends Component{
     }
     // componentWillMount(){
     //     // 判断是服务器环境
-    //     if(this.props.staticContext){
+    //     if(this.props.staticcontext){
     //         // 负值css属性，在node端获取
-    //         this.props.staticContext.css.push(style._getCss())
+    //         this.props.staticcontext.css.push(style._getCss())
     //     }
     // }
     componentDidMount(){
@@ -52,8 +53,15 @@ class Home extends Component{
     render(){
         const { name,list } = this.props
         // console.log(this.props,'props')
+        // Helmet用作标题的渲染，提高搜索引擎的优化
         return(
             <div>
+                <Helmet>
+                    <title>
+                        刘坤的ssr
+                    </title>
+                    <meta name="Description" content="刘加油啊棒棒哒"></meta>
+                </Helmet>
                 <div>this a onemore time</div>
                 <div>{name}</div>
                 <div onClick={this.toDo}>click me</div>

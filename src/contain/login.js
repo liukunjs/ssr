@@ -8,8 +8,8 @@ class Login extends Component {
         }
     }
     componentWillMount(){
-        if(this.props.staticContext){
-            this.props.staticContext.css.push(style._getCss())
+        if(this.props.staticcontext){
+            this.props.staticcontext.css.push(style._getCss())
         }
     }
     render(){
