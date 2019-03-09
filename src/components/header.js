@@ -7,9 +7,9 @@ export default class Header extends Component {
         this.state = {}
     }
     componentWillMount(){
-        console.log(this.props.staticcontext,"context")
-        if(this.props.staticcontext){
-            this.props.staticcontext.css.push(style._getCss())
+        console.log(this.props.staticContext,"context")
+        if(this.props.staticContext){
+            this.props.staticContext.css.push(style._getCss())
         }
     }
     render (){

@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-export default ( defaultComponent ,style)=>{
+export default ( DefaultComponent ,style)=>{
     console.log(Component,"com")
     return class Henent extends Component{
         constructor(props){
@@ -7,13 +7,13 @@ export default ( defaultComponent ,style)=>{
             this.status = {}
         }
         componentWillMount(){
-            if(this.props.staticcontext){
-                this.props.staticcontext.css.push(style._getCss())
+            if(this.props.staticContext){
+                this.props.staticContext.css.push(style._getCss())
             }
         }
         render(){
             return (
-                <defaultComponent {...this.props}/>
+                <DefaultComponent {...this.props}/>
             )
         }
     }

@@ -5,7 +5,6 @@ import {Helmet} from "react-helmet"
 import query from '../action/query';
 import style from "./home.css"
 import heighComponent from "../utils/heightComponent.js"
-heighComponent();
 class Home extends Component{
     constructor (props){
         super(props);
@@ -28,9 +27,9 @@ class Home extends Component{
     }
     // componentWillMount(){
     //     // 判断是服务器环境
-    //     if(this.props.staticcontext){
+    //     if(this.props.staticContext){
     //         // 负值css属性，在node端获取
-    //         this.props.staticcontext.css.push(style._getCss())
+    //         this.props.staticContext.css.push(style._getCss())
     //     }
     // }
     componentDidMount(){
@@ -60,7 +59,7 @@ class Home extends Component{
                     <title>
                         刘坤的ssr
                     </title>
-                    <meta name="Description" content="刘加油啊棒棒哒"></meta>
+                    <meta name="description" content="刘加油啊棒棒哒"></meta>
                 </Helmet>
                 <div>this a onemore time</div>
                 <div>{name}</div>
